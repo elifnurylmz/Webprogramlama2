@@ -1,0 +1,43 @@
+﻿@using Webprogramlama2.Models.Entity
+@model List<TBL_KITAP>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Kitaplar</h2>
+
+<input type="text" class=" form-control" placeholder="Arama..."/>
+<div style="margin-bottom:15px;margin-top:15px"></div>
+
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Kitap Adı</th>
+        <th>Kitap Yazarı</th>
+        <th>Kategori</th>
+        <th>Basım Yılı</th>
+        <th>Yayınevi</th>
+        <th>Sayfa</th>
+        <th>Durum</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    @foreach(var k in Model)
+            {
+                <tr>
+                    <td>@k.ID</td>
+                    <td>@k.AD</td>
+                    <td>@k.TBL_YAZAR.AD&nbsp; @k.TBL_YAZAR.SOYAD</td>
+                    <td>@k.TBL_KATEGORI.AD</td>
+                    <td>@k.BASIMYIL </td>
+                    <td>@k.YAYINEVI</td>
+                    <td>@k.SAYFASAYISI</td>
+                    <td>@k.DURUM</td>
+                    <td><a href="/Kitaplar/KitapSil/@k.ID" class="btn btn-danger">Sil</a></td>
+                    <td><a href="/Kitaplar/KitapGetir/@k.ID" class="btn btn-success">Güncelle</a></td>
+                </tr>
+            }
+</table>
+<a href="/Kitaplar/KitapEkle" class="btn btn-primary">Kitap Ekle</a>
+
