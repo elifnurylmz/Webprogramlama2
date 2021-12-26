@@ -1,0 +1,63 @@
+﻿@model Webprogramlama2.Models.Entity.TBL_UYELER
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>PROFİLİM</h2>
+
+@using (Html.BeginForm("Index2", "Profilim", FormMethod.Post))
+{
+
+<table class="table table-hover" style="margin-top:15px">
+    <tr>
+        <td>
+            ID: @Session["id"].ToString()
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Mail Adresi: @HttpContext.Current.User.Identity.Name
+        </td>
+    </tr>
+    <tr>
+        <td>
+            AD: @Session["Ad"].ToString()
+        </td>
+    </tr>
+    <tr>
+        <td>
+            SOYAD: @Session["Soyad"].ToString()
+        </td>
+    </tr>
+    <tr>
+        <td>
+            KULLANICI ADI: @Session["KullanıcıAdı"].ToString()
+        </td>
+    </tr>
+    <tr>
+        <td>
+            ŞİFRE: <input type="text" class="form-control" value="@Session["Şifre"].ToString()" name="SIFRE" />
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            TELEFON: @Session["Telefon"].ToString()
+        </td>
+    </tr>
+    <tr>
+        <td>
+            OKUL: @Session["Okul"].ToString()
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button class="btn btn-warning">Şifre Güncelle</button>
+        </td>
+    </tr>
+
+
+</table>
+}

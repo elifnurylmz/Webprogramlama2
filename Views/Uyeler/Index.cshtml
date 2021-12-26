@@ -1,0 +1,42 @@
+﻿@using Webprogramlama2.Models.Entity
+@model List<TBL_UYELER>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Üyeler</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>ÜYE ID</th>
+        <th>ÜYE ADI</th>
+        <th>ÜYE SOYADI</th>
+        <th>MAİL</th>
+        <th>KULLANICI ADI</th>
+        <th>ŞİFRE</th>
+        <th>TELEFON</th>
+        <th>OKUL</th>
+        <th>SİL</th>
+        <th>GÜNCELLE</th>
+    </tr>
+    @foreach (var uye in Model)
+    {
+<tr>
+    <td>@uye.ID</td>
+    <td>@uye.AD</td>
+    <td>@uye.SOYAD</td>
+    <td>@uye.MAIL</td>
+    <td>@uye.KULLANICIADI</td>
+    <td>@uye.SIFRE</td>
+    <td>@uye.TELEFON</td>
+    <td>@uye.OKUL</td>
+    <td><a href="/Uyeler/UyelerSil/@uye.ID" class="btn btn-danger">Sil</a></td>
+    <td><a href="/Uyeler/UyelerGetir/@uye.ID" class="btn btn-success">Güncelle</a></td>
+</tr>
+        
+    }
+</table>
+
+<td><a href="/Uyeler/UyelerEkle/" class="btn btn-primary">Yeni Üye Ekle</a></td>
+

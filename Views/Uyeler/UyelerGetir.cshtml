@@ -1,0 +1,41 @@
+﻿@model Webprogramlama2.Models.Entity.TBL_UYELER
+@{
+    ViewBag.Title = "UyelerGetir";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@using (Html.BeginForm("UyelerGuncelle", "Uyeler", FormMethod.Post))
+{
+    <div style="margin-bottom:15px"></div>
+    <div class="form-group">
+        <div style="margin-bottom:15px">
+            @Html.LabelFor(k => k.ID)
+            @Html.TextBoxFor(k => k.ID, new { @class = "form-control" })
+            <br />
+            <label>Üye Adı</label>
+            @Html.TextBoxFor(k => k.AD, new { @class = "form-control" })
+            <br />
+            <label>Üye Soyadı</label>
+            @Html.TextBoxFor(k => k.SOYAD, new { @class = "form-control" })
+            <br />
+            <label>Kullanıcı Adı</label>
+            @Html.TextAreaFor(k => k.KULLANICIADI, new { @class = "form-control" })
+            <br />
+            <label>Şifre</label>
+            @Html.TextAreaFor(k => k.SIFRE, new { @class = "form-control" })
+            <br />
+            <label>Mail</label>
+            @Html.TextAreaFor(k => k.MAIL, new { @class = "form-control" })
+            <br />
+            <label>Üyenin Okulu</label>
+            @Html.TextAreaFor(k => k.OKUL, new { @class = "form-control" })
+            <br />
+            <label>Üye Telefon</label>
+            @Html.TextAreaFor(k => k.TELEFON, new { @class = "form-control" })
+        </div>
+        <div>
+        <button class="btn btn-warning">Üye Bilgilerini Güncelle</button>
+    </div>
+    </div>
+}
+

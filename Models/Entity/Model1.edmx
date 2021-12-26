@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DB_KUTUPHANEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DB_KUTUPHANEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -64,6 +64,7 @@
           <Property Name="YAYINEVI" Type="varchar" MaxLength="50" />
           <Property Name="SAYFASAYISI" Type="varchar" MaxLength="50" />
           <Property Name="DURUM" Type="bit" />
+          <Property Name="KITAPRESIM" Type="varchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="TBL_PERSONEL">
           <Key>
@@ -143,7 +144,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TBL_KITAP_TBL_KATEGORI">
+        <Association Name="FK_TBL_KITAP_TBL_KATEGORI1">
           <End Role="TBL_KATEGORI" Type="Self.TBL_KATEGORI" Multiplicity="0..1" />
           <End Role="TBL_KITAP" Type="Self.TBL_KITAP" Multiplicity="*" />
           <ReferentialConstraint>
@@ -155,7 +156,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TBL_KITAP_TBL_YAZAR">
+        <Association Name="FK_TBL_KITAP_TBL_YAZAR1">
           <End Role="TBL_YAZAR" Type="Self.TBL_YAZAR" Multiplicity="0..1" />
           <End Role="TBL_KITAP" Type="Self.TBL_KITAP" Multiplicity="*" />
           <ReferentialConstraint>
@@ -193,17 +194,16 @@
             <End Role="TBL_UYELER" EntitySet="TBL_UYELER" />
             <End Role="TBL_HAREKET" EntitySet="TBL_HAREKET" />
           </AssociationSet>
-          <AssociationSet Name="FK_TBL_KITAP_TBL_KATEGORI" Association="Self.FK_TBL_KITAP_TBL_KATEGORI">
+          <AssociationSet Name="FK_TBL_KITAP_TBL_KATEGORI1" Association="Self.FK_TBL_KITAP_TBL_KATEGORI1">
             <End Role="TBL_KATEGORI" EntitySet="TBL_KATEGORI" />
             <End Role="TBL_KITAP" EntitySet="TBL_KITAP" />
           </AssociationSet>
-          <AssociationSet Name="FK_TBL_KITAP_TBL_YAZAR" Association="Self.FK_TBL_KITAP_TBL_YAZAR">
+          <AssociationSet Name="FK_TBL_KITAP_TBL_YAZAR1" Association="Self.FK_TBL_KITAP_TBL_YAZAR1">
             <End Role="TBL_YAZAR" EntitySet="TBL_YAZAR" />
             <End Role="TBL_KITAP" EntitySet="TBL_KITAP" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DB_KUTUPHANEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -275,6 +275,7 @@
           <NavigationProperty Name="TBL_HAREKET" Relationship="Self.FK_TBL_HAREKET_TBL_KITAP" FromRole="TBL_KITAP" ToRole="TBL_HAREKET" />
           <NavigationProperty Name="TBL_KATEGORI" Relationship="Self.FK_TBL_KITAP_TBL_KATEGORI" FromRole="TBL_KITAP" ToRole="TBL_KATEGORI" />
           <NavigationProperty Name="TBL_YAZAR" Relationship="Self.FK_TBL_KITAP_TBL_YAZAR" FromRole="TBL_KITAP" ToRole="TBL_YAZAR" />
+          <Property Name="KITAPRESIM" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="TBL_PERSONEL">
           <Key>
@@ -477,6 +478,7 @@
           <EntitySetMapping Name="TBL_KITAP">
             <EntityTypeMapping TypeName="DB_KUTUPHANEModel.TBL_KITAP">
               <MappingFragment StoreEntitySet="TBL_KITAP">
+                <ScalarProperty Name="KITAPRESIM" ColumnName="KITAPRESIM" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="AD" ColumnName="AD" />
                 <ScalarProperty Name="KATEGORI" ColumnName="KATEGORI" />
